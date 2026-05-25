@@ -1,0 +1,366 @@
+/* Portfolio Gallery Lightbox Styles */
+
+/* Lightbox Container */
+.pgl-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Overlay */
+.pgl-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 1;
+}
+
+/* Content Container */
+.pgl-content {
+    position: relative;
+    width: 90%;
+    height: 90vh;
+    max-width: 1400px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Close Button */
+.pgl-close {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.pgl-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: rotate(90deg);
+}
+
+.pgl-close svg {
+    color: #ffffff;
+    width: 24px;
+    height: 24px;
+}
+
+/* Loader */
+.pgl-loader {
+    text-align: center;
+    color: #ffffff;
+}
+
+.pgl-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: pgl-spin 0.8s linear infinite;
+}
+
+@keyframes pgl-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.pgl-loader-text {
+    font-size: 16px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Error Message */
+.pgl-error {
+    text-align: center;
+    color: #ff6b6b;
+    max-width: 500px;
+}
+
+.pgl-error-message {
+    font-size: 16px;
+    margin: 0;
+    padding: 20px;
+    background: rgba(255, 107, 107, 0.1);
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 8px;
+}
+
+/* Slider Wrapper */
+.pgl-slider-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+/* Swiper Container */
+.pgl-swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.pgl-swiper .swiper-wrapper {
+    align-items: center;
+}
+
+.pgl-swiper .swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+/* Image Container */
+.pgl-image-container {
+    position: relative;
+    max-width: 100%;
+    max-height: calc(90vh - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pgl-image {
+    max-width: 100%;
+    max-height: calc(90vh - 100px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    cursor: zoom-in;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.pgl-image.loaded,
+.pgl-image:not(.swiper-lazy) {
+    opacity: 1;
+}
+
+/* Video Container */
+.pgl-video-container {
+    position: relative;
+    max-width: 100%;
+    max-height: calc(90vh - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.pgl-video {
+    max-width: 100%;
+    max-height: calc(90vh - 100px);
+    width: auto;
+    height: auto;
+    display: block;
+    background: #000;
+    outline: none;
+}
+
+.pgl-video::-webkit-media-controls-panel {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption */
+.pgl-caption {
+    margin-top: 15px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* Swiper Navigation Buttons */
+.pgl-swiper .swiper-button-prev,
+.pgl-swiper .swiper-button-next {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.pgl-swiper .swiper-button-prev:hover,
+.pgl-swiper .swiper-button-next:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.pgl-swiper .swiper-button-prev:after,
+.pgl-swiper .swiper-button-next:after {
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.pgl-swiper .swiper-button-prev.swiper-button-disabled,
+.pgl-swiper .swiper-button-next.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+/* Lazy Loading Preloader */
+.swiper-lazy-preloader {
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -21px;
+    margin-top: -21px;
+    z-index: 10;
+    transform-origin: 50%;
+    animation: pgl-spin 1s infinite linear;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    border-top-color: #ffffff;
+}
+
+/* Trigger Button Basic Styles */
+.portfolio-gallery-trigger {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.portfolio-gallery-trigger:hover {
+    background: transparent;
+    color: #000000;
+}
+
+/* Clickable Loop Item Styles */
+.portfolio-loop-item,
+[data-portfolio-id] {
+    cursor: pointer;
+}
+
+.portfolio-loop-item {
+    position: relative;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .pgl-content {
+        width: 95%;
+        height: 85vh;
+    }
+    
+    .pgl-close {
+        top: -40px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .pgl-close svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .pgl-image-container,
+    .pgl-video-container {
+        max-height: calc(85vh - 80px);
+    }
+    
+    .pgl-image,
+    .pgl-video {
+        max-height: calc(85vh - 80px);
+    }
+    
+    .pgl-swiper .swiper-button-prev,
+    .pgl-swiper .swiper-button-next {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .pgl-swiper .swiper-button-prev:after,
+    .pgl-swiper .swiper-button-next:after {
+        font-size: 16px;
+    }
+    
+    .pgl-caption {
+        font-size: 13px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pgl-content {
+        width: 100%;
+        height: 100vh;
+    }
+    
+    .pgl-close {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .pgl-swiper .swiper-button-prev {
+        left: 5px;
+    }
+    
+    .pgl-swiper .swiper-button-next {
+        right: 5px;
+    }
+    
+    .pgl-video-container {
+        max-height: calc(100vh - 100px);
+    }
+    
+    .pgl-video {
+        max-height: calc(100vh - 100px);
+        width: 100%;
+    }
+}
+
+/* PhotoSwipe Custom Styles Override */
+.pswp {
+    z-index: 9999999;
+}
+
+.pswp__bg {
+    background: rgba(0, 0, 0, 0.95);
+}
+
+/* Accessibility */
+.pgl-close:focus,
+.pgl-swiper .swiper-button-prev:focus,
+.pgl-swiper .swiper-button-next:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
